@@ -1,12 +1,11 @@
-
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>ehh.. halo?</title>
+  <title>ayo balas, cuhz</title>
   <style>
     body {
-      background-color: #ffcce0;
+      background-color: #ffd6e8;
       font-family: 'Segoe UI', sans-serif;
       display: flex;
       flex-direction: column;
@@ -14,105 +13,94 @@
       justify-content: center;
       height: 100vh;
       margin: 0;
-      color: #333;
-    }
-
-    h1 {
-      font-size: 2em;
-      text-align: center;
+      color: #222;
     }
 
     #message {
       font-size: 1.2em;
-      margin-top: 10px;
-      width: 80%;
-      max-width: 500px;
       text-align: center;
+      width: 85%;
+      max-width: 500px;
       min-height: 60px;
+      margin-bottom: 25px;
     }
 
     .btn {
-      margin-top: 30px;
-      padding: 10px 20px;
+      padding: 10px 22px;
       background-color: #ff99bb;
       color: white;
       border: none;
-      border-radius: 25px;
+      border-radius: 20px;
       cursor: pointer;
       font-size: 1em;
-      transition: background 0.3s;
+      transition: 0.2s ease;
     }
 
     .btn:hover {
       background-color: #ff4d88;
     }
+
+    .music-btn {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: #ff99bb;
+      border: none;
+      color: white;
+      padding: 8px 14px;
+      border-radius: 18px;
+      cursor: pointer;
+      font-size: 13px;
+    }
   </style>
 </head>
 <body>
 
-  
-  <h1 id="message"></h1>
-  <button class="btn" onclick="nextMessage()">Klik kalo kamu masih inget aku</button>
+  <div id="message"></div>
+  <button class="btn" onclick="nextMessage()">Next, cuhz</button>
 
   <audio id="bgmusic" autoplay loop>
     <source src="terakhir-kali.mp3" type="audio/mpeg">
-    Browser kamu nggak support audio bro.
+    Browser kamu nggak support audio.
   </audio>
 
-  <button onclick="toggleMusic()" style="
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    background-color: #ff99bb;
-    border: none;
-    color: white;
-    padding: 10px 15px;
-    border-radius: 20px;
-    cursor: pointer;
-    font-size: 14px;
-  ">🔊 Musik</button>
+  <button class="music-btn" onclick="toggleMusic()">🔊 Musik</button>
 
   <script>
     const messages = [
-      "Lagi aktif, tapi ga bales ya?",
-      "Aku cuma pengen ngerti, bukan maksa kok.",
-      "Kalo kamu udah punya yang lain... gapapa, aku ikhlas kok :)",
-      "Tapi bilang aja, jangan diem-diem gini yaa...",
-      "Aku cuma pengen tau... masih ada aku di pikiranmu nggak?"
+      "Vro, why you ain't replyin to my chat cuhz? 🥀",
+      "You online all day but I ain't see no notif from you.",
+      "If you got someone else, just be real with me.",
+      "I ain't mad, just... confused fr.",
+      "Say somethin' cuhz. This silence louder than bass drop."
     ];
 
     let i = 0;
-    const messageEl = document.getElementById('message');
-    const music = document.getElementById("bgmusic");
+    const msg = document.getElementById('message');
+    const music = document.getElementById('bgmusic');
 
     function nextMessage() {
       if (i < messages.length) {
-        typeWriter(messages[i], 0);
+        typeText(messages[i], 0);
         i++;
       } else {
-        messageEl.innerText = "udah segitu aja... makasih udah buka web ini :)";
+        msg.innerText = "Aight. That’s it. Stay real.";
       }
     }
 
-    function typeWriter(text, j) {
-      if (j < text.length) {
-        messageEl.innerText = text.substring(0, j + 1);
-        setTimeout(() => typeWriter(text, j + 1), 50);
+    function typeText(text, index) {
+      if (index < text.length) {
+        msg.innerText = text.substring(0, index + 1);
+        setTimeout(() => typeText(text, index + 1), 35);
       }
     }
 
     function toggleMusic() {
-      if (music.paused) {
-        music.play();
-      } else {
-        music.pause();
-      }
+      music.paused ? music.play() : music.pause();
     }
 
     music.volume = 0.3;
-    window.onload = () => {
-      nextMessage();
-    };
+    window.onload = nextMessage;
   </script>
 
 </body>
